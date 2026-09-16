@@ -2,6 +2,13 @@
 
 A [Minecraft](https://minecraft.net) mod built on [Fabric](https://fabricmc.net) that adds three arrows that carry something to where they land.
 
+## Screenshots
+
+![The three of them: a torch arrow, a fire arrow and an explosive arrow](arrows.png)
+![A torch arrow lights a wall from where you stand, in the dark](torch-arrow.png)
+![An explosive arrow going off against a stone wall](explosive-arrow.png)
+![The way through it leaves: a hole, not a crater](explosive-arrow-hole.png)
+
 | Arrow | Crafted from | Where it lands |
 |-------|--------------|----------------|
 | **Torch Arrow** | an arrow and a torch | Sets a torch on the face it strikes: standing on a top, fixed to a side |

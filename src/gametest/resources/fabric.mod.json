@@ -8,7 +8,8 @@
 	"environment": "*",
 	"entrypoints": {
 		"fabric-client-gametest": [
-			"justfatlard.fire_arrows.gametest.ArrowsLand"
+			"justfatlard.fire_arrows.gametest.ArrowsLand",
+			"justfatlard.fire_arrows.gametest.Showcase"
 		]
 	},
 	"depends": {
