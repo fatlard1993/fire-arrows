@@ -1,0 +1,18 @@
+{
+	"schemaVersion": 1,
+	"id": "fire-arrows-gametest",
+	"version": "1.0.0",
+	"name": "Fire Arrows game tests",
+	"description": "Fires each arrow at what it is for.",
+	"license": "MIT",
+	"environment": "*",
+	"entrypoints": {
+		"fabric-client-gametest": [
+			"justfatlard.fire_arrows.gametest.ArrowsLand"
+		]
+	},
+	"depends": {
+		"fire-arrows-justfatlard": "*",
+		"fabric-client-gametest-api-v1": "*"
+	}
+}

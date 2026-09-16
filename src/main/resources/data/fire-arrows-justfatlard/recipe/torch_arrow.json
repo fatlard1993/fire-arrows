@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "equipment",
+	"ingredients": [
+		"minecraft:torch",
+		"minecraft:arrow"
+	],
+	"result": {
+		"id": "fire-arrows-justfatlard:torch_arrow",
+		"count": 1
+	}
+}

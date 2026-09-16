@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "equipment",
+	"ingredients": [
+		"minecraft:fire_charge",
+		"minecraft:arrow",
+		"minecraft:arrow",
+		"minecraft:arrow",
+		"minecraft:arrow"
+	],
+	"result": {
+		"id": "fire-arrows-justfatlard:fire_arrow",
+		"count": 4
+	}
+}
