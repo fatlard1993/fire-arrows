@@ -1,0 +1,15 @@
+{
+	"overview": [
+		"Three arrows that carry something to where they land: a torch arrow that plants a torch on whatever it strikes, a fire arrow that sets things alight and lights TNT, and an explosive arrow with a block of TNT on the tip.",
+		"They are ammunition like any other arrow, so a bow, a crossbow and a dispenser all fire them."
+	],
+	"versions": {
+		"1.0.1": [
+			"A fresh build. The arrows themselves are unchanged."
+		],
+		"1.0.0": [
+			"The three arrows arrive: a torch set on the face it strikes, fire that lights what it hits and sets off sitting TNT, and a blast big enough to open a wall and small enough to shoot from where you stand.",
+			"A crafting table makes all three, and a fletching table does too when Fletch Craft is installed."
+		]
+	}
+}
