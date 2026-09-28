@@ -12,7 +12,11 @@ import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.block.CandleBlock;
+import net.minecraft.world.level.block.CandleCakeBlock;
 import net.minecraft.world.level.block.WallTorchBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -58,8 +62,7 @@ public final class ArrowHits {
 				return false;
 			}
 			case FIRE -> {
-				// Burning, the game lights what it strikes on its own; the arrow left in the ground
-				// is an ordinary one, the charge gone into the hit.
+				if (arrow.isOnFire()) kindle(level, arrow, hit);
 				spend(arrow, charge);
 				return false;
 			}
@@ -92,6 +95,26 @@ public final class ArrowHits {
 	}
 
 	/**
+	 * Fire on the face it struck, as flint and steel would set it. A burning arrow lights TNT,
+	 * candles and campfires by itself, so those are left to the game.
+	 */
+	private static void kindle(ServerLevel level, AbstractArrow arrow, BlockHitResult hit) {
+		BlockState struck = level.getBlockState(hit.getBlockPos());
+		if (CampfireBlock.canLight(struck) || CandleBlock.canLight(struck) || CandleCakeBlock.canLight(struck)) return;
+
+		BlockPos at = hit.getBlockPos().relative(hit.getDirection());
+		if (!mayPlace(level, arrow, at) || !BaseFireBlock.canBePlacedAt(level, at, arrow.getDirection())) return;
+		level.setBlockAndUpdate(at, BaseFireBlock.getState(level, at));
+		level.playSound(null, at, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
+	}
+
+	/** Where the one who fired it could have set a block by hand; a dispenser may set one anywhere. */
+	private static boolean mayPlace(ServerLevel level, AbstractArrow arrow, BlockPos at) {
+		return !(arrow.getOwner() instanceof ServerPlayer player)
+			|| (player.mayBuild() && level.mayInteract(player, at));
+	}
+
+	/**
 	 * On the face it struck: standing on a top, fixed to a side. Where a torch will not go - a
 	 * ceiling, water, somebody's protected ground - the torch drops where it would have stood.
 	 */
@@ -102,8 +125,7 @@ public final class ArrowHits {
 			: face == Direction.DOWN ? null
 			: Blocks.WALL_TORCH.defaultBlockState().setValue(WallTorchBlock.FACING, face);
 
-		boolean allowed = !(arrow.getOwner() instanceof ServerPlayer player)
-			|| (player.mayBuild() && level.mayInteract(player, at));
+		boolean allowed = mayPlace(level, arrow, at);
 		BlockState there = level.getBlockState(at);
 		if (torch != null && allowed && there.canBeReplaced() && there.getFluidState().isEmpty()
 				&& torch.canSurvive(level, at)) {

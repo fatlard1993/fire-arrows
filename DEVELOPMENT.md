@@ -22,4 +22,4 @@ Install server-side alongside its declared dependencies (see `fabric.mod.json`);
 
 ## Tests
 
-`xvfb-run -a ./gradlew runClientGameTest` starts a client, joins a world and fires each arrow at what it is for: a torch arrow into a wall, a fire arrow into TNT and into a cow, an explosive arrow into a wall. It checks what is left, and that every arrow is ammunition and has its recipe.
+`xvfb-run -a ./gradlew runClientGameTest` starts a client, joins a world and fires each arrow at what it is for: a torch arrow into a wall, a fire arrow into TNT, into planks and into a cow, an explosive arrow into a wall. It checks what is left, and that every arrow is ammunition and has its recipe.

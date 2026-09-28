@@ -76,6 +76,17 @@ public final class ArrowsLand implements FabricClientGameTest {
 				"the fire arrow did not light the TNT: " + s.overworld().getBlockState(tnt)));
 			context.waitTicks(90);
 
+			// A fire arrow into a plank wall: the wall catches.
+			BlockPos planks = base.south(8).east(10);
+			server.runOnServer(s -> {
+				ServerLevel level = s.overworld();
+				level.setBlockAndUpdate(planks, Blocks.OAK_PLANKS.defaultBlockState());
+				fire(level, Charge.FIRE, Vec3.atCenterOf(planks.north(6)), Vec3.atCenterOf(planks));
+			});
+			context.waitTicks(20);
+			server.runOnServer(s -> check(s.overworld().getBlockState(planks.north()).is(Blocks.FIRE),
+				"the fire arrow did not set the planks alight: " + s.overworld().getBlockState(planks.north())));
+
 			// A fire arrow into a cow: it is alight.
 			BlockPos pen = base.west(10);
 			int cow = server.computeOnServer(s -> {

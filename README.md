@@ -12,7 +12,7 @@ A [Minecraft](https://minecraft.net) mod built on [Fabric](https://fabricmc.net)
 | Arrow | Crafted from | Where it lands |
 |-------|--------------|----------------|
 | **Torch Arrow** | an arrow and a torch | Sets a torch on the face it strikes: standing on a top, fixed to a side |
-| **Fire Arrow** (4) | four arrows and a fire charge | Flies burning: sets what it hits alight, and lights TNT, candles and campfires it strikes |
+| **Fire Arrow** (4) | four arrows and a fire charge | Flies burning: sets fire where it lands, sets what it hits alight, and lights TNT, candles and campfires it strikes |
 | **Explosive Arrow** (4) | four arrows and a block of TNT | Goes off at whatever it strikes, with less than TNT's force |
 
 They are ammunition like any other arrow: a bow draws them, a crossbow loads them, a dispenser fires them.
@@ -20,7 +20,7 @@ They are ammunition like any other arrow: a bow draws them, a crossbow loads the
 ## Where they land
 
 - **A torch arrow** leaves its torch on the block it hits. Where a torch cannot go - a ceiling, water, ground the shooter may not build on - the torch drops there instead. The arrow itself is left stuck in the block and picks up as a plain arrow.
-- **A fire arrow** is an arrow on fire, the same as one from a bow with Flame, so everything the game already does with a burning arrow it does: a mob or player it hits burns, TNT it strikes is lit, a candle or campfire catches. Water and rain put it out. Once it lands it is a plain arrow to pick up, the charge spent.
+- **A fire arrow** is an arrow on fire, the same as one from a bow with Flame, so everything the game already does with a burning arrow it does: a mob or player it hits burns, TNT it strikes is lit, a candle or campfire catches. It also sets fire on the face it strikes, as flint and steel would, so wood and anything else that burns catches; not on ground its shooter could not build on. Water and rain put it out. Once it lands it is a plain arrow to pick up, the charge spent.
 - **An explosive arrow** explodes where it hits, block or creature, and is gone. Under TNT's force: it takes a bite out of a wall rather than a room out of a house. The shooter is who the explosion answers to.
 
 ## At the fletching table

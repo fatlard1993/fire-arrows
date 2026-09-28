@@ -4,6 +4,9 @@
 		"They are ammunition like any other arrow, so a bow, a crossbow and a dispenser all fire them."
 	],
 	"versions": {
+		"1.0.2": [
+			"A fire arrow sets fire where it lands, so wood and other burnable blocks catch."
+		],
 		"1.0.1": [
 			"A fresh build. The arrows themselves are unchanged."
 		],
