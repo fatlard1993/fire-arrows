@@ -1,6 +1,8 @@
 package justfatlard.fire_arrows;
 
 import justfatlard.fire_arrows.mixin.AbstractArrowAccessor;
+import justfatlard.pandorical.api.PandoricalApi;
+import justfatlard.pandorical.api.Trust;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -67,6 +69,11 @@ public final class ArrowHits {
 				return false;
 			}
 			case EXPLOSIVE -> {
+				// Not trusted with explosives: it lands as the plain arrow it is underneath.
+				if (!trusted(arrow, Trust.EXPLOSIVES)) {
+					spend(arrow, charge);
+					return false;
+				}
 				explode(level, arrow, hit.getLocation());
 				return true;
 			}
@@ -77,7 +84,7 @@ public final class ArrowHits {
 	/** An arrow striking an entity. */
 	public static boolean hitEntity(AbstractArrow arrow) {
 		if (!(arrow.level() instanceof ServerLevel level)) return false;
-		if (chargeOf(arrow) != Charge.EXPLOSIVE) return false;
+		if (chargeOf(arrow) != Charge.EXPLOSIVE || !trusted(arrow, Trust.EXPLOSIVES)) return false;
 		explode(level, arrow, arrow.position());
 		return true;
 	}
@@ -103,9 +110,14 @@ public final class ArrowHits {
 		if (CampfireBlock.canLight(struck) || CandleBlock.canLight(struck) || CandleCakeBlock.canLight(struck)) return;
 
 		BlockPos at = hit.getBlockPos().relative(hit.getDirection());
-		if (!mayPlace(level, arrow, at) || !BaseFireBlock.canBePlacedAt(level, at, arrow.getDirection())) return;
+		if (!trusted(arrow, Trust.FIRE) || !mayPlace(level, arrow, at) || !BaseFireBlock.canBePlacedAt(level, at, arrow.getDirection())) return;
 		level.setBlockAndUpdate(at, BaseFireBlock.getState(level, at));
 		level.playSound(null, at, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
+	}
+
+	/** Whether an op has trusted the one who fired it with this; a dispenser answers to nobody. */
+	private static boolean trusted(AbstractArrow arrow, Trust what) {
+		return !(arrow.getOwner() instanceof ServerPlayer player) || PandoricalApi.trust().may(player, what);
 	}
 
 	/** Where the one who fired it could have set a block by hand; a dispenser may set one anywhere. */
