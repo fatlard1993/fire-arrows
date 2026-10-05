@@ -25,7 +25,7 @@ They are ammunition like any other arrow: a bow draws them, a crossbow loads the
 
 ## At the fletching table
 
-With [Fletch Craft](../fletch-craft) installed, the fletching table makes them too:
+With [Fletch Craft](https://github.com/fatlard1993/fletch-craft) installed, the fletching table makes them too:
 
 - three torches over three arrows: three torch arrows
 - a fire charge set among five arrows: five fire arrows, one more than the crafting table gives
