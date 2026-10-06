@@ -44,8 +44,8 @@ public final class Showcase implements FabricClientGameTest {
 			// the game's own binding rather than a field, which has moved before.
 			context.getInput().pressKey(options -> options.keyToggleGui);
 			context.runOnClient(client -> client.options.gamma().set(1.0));
-			server.runCommand("gamerule doDaylightCycle false");
-			server.runCommand("gamerule doWeatherCycle false");
+			server.runCommand("gamerule advance_time false");
+			server.runCommand("gamerule advance_weather false");
 			server.runCommand("gamemode spectator @a");
 
 			BlockPos origin = server.computeOnServer(s -> connection.getServerPlayer().blockPosition());
