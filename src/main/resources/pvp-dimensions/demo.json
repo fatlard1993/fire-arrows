@@ -1,0 +1,43 @@
+{
+  "demo": {
+    "name": "Fire Arrows",
+    "icon": "fire-arrows-justfatlard:fire_arrow",
+    "about": [
+      "Three arrows that carry something to where they land: a torch, fire, or a small explosion.",
+      "Light the TNT from afar with a fire arrow, light your way with torch arrows, and take down five zombies however you like."
+    ],
+    "finish": true
+  },
+  "pvp_preset": 1,
+  "needs": ["fire-arrows-justfatlard"],
+  "preset": {
+    "name": "Fire Arrows",
+    "icon": "fire-arrows-justfatlard:fire_arrow",
+    "pvp": false,
+    "game_mode": "survival",
+    "entry_kit": [
+      {"slot": 0, "item": {"id": "minecraft:bow", "count": 1}},
+      {"slot": 1, "item": {"id": "fire-arrows-justfatlard:fire_arrow", "count": 16}},
+      {"slot": 2, "item": {"id": "fire-arrows-justfatlard:torch_arrow", "count": 16}},
+      {"slot": 3, "item": {"id": "fire-arrows-justfatlard:explosive_arrow", "count": 8}},
+      {"slot": 4, "item": {"id": "minecraft:tnt", "count": 4}},
+      {"slot": 5, "item": {"id": "minecraft:cooked_beef", "count": 8}},
+      {"slot": 38, "item": {"id": "minecraft:iron_chestplate", "count": 1}}
+    ],
+    "respawn_kit": "entry",
+    "goal": "mobs",
+    "mob_goal_kind": "minecraft:zombie",
+    "mob_goal_count": 5,
+    "goal_compass": true,
+    "mobs": "always",
+    "mob_rarity": "common",
+    "mob_default": "off",
+    "mob_levels": { "minecraft:zombie": "normal" },
+    "life": 15,
+    "size": 3,
+    "world": "overworld",
+    "shape": "natural",
+    "biome": "minecraft:forest",
+    "weather": "clear"
+  }
+}
