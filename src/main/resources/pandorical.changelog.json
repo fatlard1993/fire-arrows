@@ -4,6 +4,9 @@
 		"They are ammunition like any other arrow, so a bow, a crossbow and a dispenser all fire them."
 	],
 	"versions": {
+		"1.0.8": [
+			"A demo to play in PvP Dimensions' onboarding."
+		],
 		"1.0.7": [
 			"Drop changelog notes for changes nothing in the game shows."
 		],
