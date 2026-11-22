@@ -3,7 +3,7 @@
 	"id": "fire-arrows-justfatlard",
 	"version": "${version}",
 	"name": "Fire Arrows",
-	"description": "Torch arrows that set a torch where they land, fire arrows that set things alight and light TNT, and explosive arrows with a block of TNT on the tip.",
+	"description": "Torch, fire and explosive arrows",
 	"authors": [
 		"justfatlard"
 	],
